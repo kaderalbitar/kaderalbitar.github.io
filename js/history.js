@@ -10,6 +10,11 @@ $(function() {
     $('a').removeClass('current');
     $this.addClass('current');
     loadContent(href);
+    history.pushState('', $this.text, href);
   });
 
+  window.onpopstate = function() {
+    var path = location.pathname;
+    loadContent(path);
+  }
 });
